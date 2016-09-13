@@ -1,9 +1,9 @@
-  #ignoring the mac storage files
-  .DS_Store
-  #ignoring the classpath files for commit
-	.classpath
-	#ignoring the project specific settings
-	.project
-	.settings/
-	bin/
-	.gitignore
+#ignoring the mac storage files
+.DS_Store
+#ignoring the classpath files for commit
+.classpath
+#ignoring the project specific settings
+.project
+.settings/
+bin/
+.gitignore
