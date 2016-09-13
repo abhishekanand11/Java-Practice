@@ -1,5 +1,10 @@
 package com.java.test;
 
+/**
+ * @author fcaa17922
+ * Used to find the max no of zeroes that can be obtained from an array using a single flip of a subarray
+ *
+ */
 public class TestMaxZeroSolution {
 
 	public static void main(String[] args) {
