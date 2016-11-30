@@ -17,12 +17,22 @@ public class LinkedList {
 	public void push(int new_data) {
 		/* 1. alloc the Node and put the data */
 		Node new_Node = new Node(new_data);
-
+		
+		if(head == null){
+			head = new_Node;
+		} else {
+			Node temp = head;
+			while(temp.next != null){
+				temp = temp.next;
+			}
+			temp.next = new_Node;
+		}
 		/* 2. Make next of new Node as head */
-		new_Node.next = head;
+		//new_Node.next = head;
 
 		/* 3. Move the head to point to new Node */
-		head = new_Node;
+		//head = new_Node;
+
 	}
 
 	/**
@@ -63,5 +73,33 @@ public class LinkedList {
 		}
 		return slow_ptr;
 	}
+	
+	 /* Function to remove duplicates from a unsorted linked list */
+    public Node remove_duplicates() {
+        Node ptr1 = null, ptr2 = null, dup = null;
+        ptr1 = head;
+ 
+        /* Pick elements one by one */
+        while (ptr1 != null && ptr1.next != null) {
+            ptr2 = ptr1;
+ 
+            /* Compare the picked element with rest of the elements */
+            while (ptr2.next != null) {
+ 
+                /* If duplicate then delete it */
+                if (ptr1.data == ptr2.next.data) {
+ 
+                    /* sequence of steps is important here */
+                    dup = ptr2.next;
+                    ptr2.next = ptr2.next.next;
+                    System.gc();
+                } else /* This is tricky */ {
+                    ptr2 = ptr2.next;
+                }
+            }
+            ptr1 = ptr1.next;
+        }
+        return ptr1;
+    }
 
 }
