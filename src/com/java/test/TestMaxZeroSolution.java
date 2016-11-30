@@ -11,6 +11,7 @@ public class TestMaxZeroSolution {
 		// TODO Auto-generated method stub
 		//int [] arr = {0, 1, 0, 1, 1, 0, 1, 1};
 		//System.out.println(getMaxZeroCount(arr, arr.length));
+		//NameValuePair[] euronetParam = new NameValuePair[17];
 		
 		
 
