@@ -47,7 +47,7 @@ public class LinkedList {
 	}
 
 	/**
-	 * The logic of deleting a given node Valid for singly linked list
+	 * The logic of deleting a given node for singly linked list
 	 * 
 	 * @param Node_ptr
 	 */
@@ -75,7 +75,7 @@ public class LinkedList {
 	}
 	
 	 /* Function to remove duplicates from a unsorted linked list */
-    public Node remove_duplicates() {
+    public Node removeDuplicates() {
         Node ptr1 = null, ptr2 = null, dup = null;
         ptr1 = head;
  

@@ -26,7 +26,7 @@ public class RemoveDuplicatesInAList {
 		        System.out.println("Before removing duplicates");
 		        llist.printList();
 		        
-		        llist.remove_duplicates();
+		        llist.removeDuplicates();
 		        System.out.println("\nLinked List after removing duplicates");
 		        llist.printList();
 		        
