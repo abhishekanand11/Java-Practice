@@ -8,8 +8,17 @@ package com.java.test.list;
 public class Node {
     int data;
     Node next;
+    Node prev;
     
-    Node(int d) 
+    public Node getPrev() {
+		return prev;
+	}
+
+	public void setPrev(Node prev) {
+		this.prev = prev;
+	}
+
+	Node(int d) 
     {
     	data = d; 
     	next = null; 
