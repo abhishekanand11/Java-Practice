@@ -12,7 +12,7 @@ public class LinkedList {
 
 	/*
 	 * Given a reference to the head of a list and an int, inserts a new Node on
-	 * the front of the list.
+	 * the end of the list.
 	 */
 	public void push(int new_data) {
 		/* 1. alloc the Node and put the data */
