@@ -3,7 +3,7 @@ package com.java.test.tree;
 
 /**
  * The Binary Tree class that holds the node and leaves
- * @author abhishek
+ * @author abhishekanand
  *
  */
 public class BinaryTree {
