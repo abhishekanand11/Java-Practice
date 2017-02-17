@@ -1,7 +1,11 @@
 package com.java.test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
 
 public class TestStringContains {
 
@@ -15,6 +19,11 @@ public class TestStringContains {
 			System.out.println(false);
 		}
 		System.out.println(errorCodeList);
+		try{
+		System.out.println(getJsonString());
+		} catch (Exception e){
+			
+		}
 }
 	
 	public static List<String> getListFromCommaSeparatedString(String operatorString){
@@ -26,4 +35,13 @@ public class TestStringContains {
 		}
 		return operatorsList;
 	}
+	
+	public static String getJsonString() throws  IOException {
+		Pojo p = new Pojo();
+		p.setLob("merchant_id");
+		p.setMobMerchantId("abc");
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(p);
+        return json;
+    }
 }

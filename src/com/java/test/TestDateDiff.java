@@ -1,31 +1,35 @@
 	package com.java.test;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
 
 public class TestDateDiff {
 
-	public static SimpleDateFormat              dateViewFormat = new SimpleDateFormat("yyyy-MM-dd");
+	public static String              dateViewFormat ="yyyy-MM-dd";
+	private static final int ZERO_DAYS = 0;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		LocalDate billDate = LocalDate.parse("2017-01-30",
+				DateTimeFormat.forPattern(dateViewFormat));
+	System.out.println(addOneMonth(billDate));
 	
-		try{
-		Date dueDateFromBill = dateViewFormat.parse("2016-11-05");
-		Timestamp dueDate = new Timestamp(dueDateFromBill.getTime());
-		
-		System.out.println(dueDate);
-		if(dueDate.after(new Date())){
-			System.out.println("Yes after now date");
+	LocalDate now = LocalDate.parse("2017-01-30", DateTimeFormat.forPattern(dateViewFormat));
+	
+	 if (Days.daysBetween(now, billDate) == Days.days(ZERO_DAYS)) {
+		System.out.println("hai");
+	 }
+	}
+	
+	private static LocalDate addOneMonth(LocalDate date) {
+		LocalDate now = LocalDate.parse("2017-01-30", DateTimeFormat.forPattern(dateViewFormat));
+		if (date.isAfter(now)) {
+			date = date.plusMonths(1);
+		} else {
+			date = now.withDayOfMonth(date.getDayOfMonth());
+			date = date.plusMonths(1);
 		}
-		
-		DateTime dueDateJoda = new DateTime(dueDate).withHourOfDay(23).withMinuteOfHour(59).withSecondOfMinute(59);
-		System.out.println(new Timestamp(dueDateJoda.getMillis()));				
-		}catch(Exception e){
-			
-		}
+		return date;
 	}
 
 }

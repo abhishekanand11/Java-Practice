@@ -9,6 +9,13 @@ public class Test {
 
 	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public static void main(String[] args) {
+		
+		List<Integer> billersEligibleForDueDateReminder = new ArrayList<Integer>();
+		billersEligibleForDueDateReminder.add(1);
+		if(billersEligibleForDueDateReminder.contains(1)){
+			System.out.println("hai");
+			
+		}
 		System.out.println(getMonthlyDatesInGivenRange(16, 60));
 	}
 	
