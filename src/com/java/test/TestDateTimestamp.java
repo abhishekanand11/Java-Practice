@@ -5,6 +5,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.joda.time.DateTime;
+
 public class TestDateTimestamp {
 
 	public static void main(String[] args) {
@@ -18,8 +20,9 @@ public class TestDateTimestamp {
              if(daysBetween(new Date(), dueDate) == 0){
              	System.out.println("hai diff");
              }
-         }
-
+		 
+		 System.out.println(daysBetween(dueDate, new DateTime().withHourOfDay(00).withMinuteOfHour(00).withSecondOfMinute(00).withMillisOfSecond(00).toDate()));
+		 }
 	}
 
 	public static int daysBetween(Date d1, Date d2){
@@ -27,7 +30,7 @@ public class TestDateTimestamp {
     }
 	
 	public static Timestamp getData() {
-		String billDueDateStr = "2017-02-09 00:00:00";
+		String billDueDateStr = "2017-02-26 00:00:00";
 
 		Timestamp billDueDateTs = null;
 		if (billDueDateStr != null) {

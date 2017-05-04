@@ -1,5 +1,10 @@
 package com.java.test;
 
+/**
+ * @author fcaa17922
+ * This class is used to find the common numbers in three sorted arrays
+ *
+ */
 public class FIndCommonInThreeSortedArrays {
 
 	public static void main(String[] args) {
