@@ -1,37 +1,34 @@
 package com.java.test;
 
 public class TestUniqueWaysToRepresentANumber {
+	static int[] print = new int[200];
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//uniqueSums(4);
-		//printTillOne(4,3,1);
-		uniqueSums(4);
+		printTillOne(8, 8, 0);
 
 	}
-	
-	static void uniqueSums(int n){
-		int temp = n;
-		while(temp > 1){
-			int steps = n/temp;
-			for(int i= steps; i >= 1; i--){
-				printTillOne(n, temp, i);
+
+	static void printTillOne(int n, int k, int idx) {
+		if (n == 0) {
+			for (int i = 0; i < idx; i++) {
+				System.out.print(print[i]);
+				System.out.print(" ");
 			}
-			temp--;
+			System.out.println();
+			return;
 		}
-	}
-	
-	static void printTillOne(int number, int start, int diff){
-		int temp = start;
-		int leftover = number - start;
-		System.out.print(temp);
-		System.out.print(" ");
-		while(leftover > 0 && leftover - diff >= 0){
-			System.out.print(leftover);
-			System.out.print(" ");
-			leftover= leftover-diff;
+
+		for (int i = k; i > 0; i--) {
+			if (i > n)
+				continue;// use i as the first number,since decreasing sequence
+			print[idx] = i; // i loops from k to 1
+			printTillOne(n - i, i, idx + 1);// since i used the rest of
+											// partition can't have any number
+											// greater than i hence second
+											// parameter is i
+
 		}
-		System.out.println();
+
 	}
-	
 }
