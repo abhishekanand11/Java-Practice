@@ -1,6 +1,8 @@
 package com.java.test;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class FindMaxVisiblePointsInAPlane {
 
@@ -10,17 +12,20 @@ public class FindMaxVisiblePointsInAPlane {
 		            {-1, -2}, {-2, -3}, {-4, -4}};
 		
 		int [][] points1 = {{3, 0}, {-2, -2}};
-		double [] angleArray = new double [points.length];
+		//double [] angleArray = new double [points.length];
+		List<Double> angleArray = new ArrayList<Double>();
 		
 		for(int i = 0; i < points.length; i++){
 			double temp = calculateAbsoluteAngle(points[i]);
 			if(temp < 0){
 				temp = 360 + temp;
+			}else if(temp <= 45){
+				angleArray.add(360+temp);
 			}
-			angleArray[i] = temp;
+			angleArray.add(temp);
 		}
 
-		Arrays.sort(angleArray);
+		Collections.sort(angleArray);
 		for(double d: angleArray){
 			System.out.println(d);
 		}
@@ -37,18 +42,22 @@ public class FindMaxVisiblePointsInAPlane {
 		return Math.atan2(y - 0.0, x - 0.0) * 180/Math.PI;
 	}
 	
-	static int getMaxInRange(double[] angleArray, double diff){
+	static int getMaxInRange(List<Double> angleArray, double diff){
 		int maxCount = 1;
-		for(int j = 0; j < angleArray.length; j++){
-			int tempCount = 0;
-			int k = j;
-			double range = 0.0;
-			 range = angleArray[j] + diff;
-			while(k < angleArray.length && angleArray[k]<=range && angleArray.length != 1){
-				k++;
+		int tempCount = 1;
+		int startIndex = 0;
+		for(int j = 1; j < angleArray.size(); j++){
+			int k = startIndex + 1;
+			if((double)angleArray.get(j) - (double)angleArray.get(startIndex) <= diff){
 				tempCount++;
+			} else {
+				while (k < j && (double)angleArray.get(j) - (double)angleArray.get(k) > diff && angleArray.size() != 1) {
+					k++;
+					tempCount--;
+				}
+				startIndex = k;
 			}
-			if(tempCount > maxCount){
+			if (tempCount > maxCount) {
 				maxCount = tempCount;
 			}
 		}

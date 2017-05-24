@@ -8,10 +8,17 @@ package com.java.test.tree;
  */
 public class BinaryTree {
 	//Root of the Binary Tree
-	Node root;
+	public Node root;
 	
 	public BinaryTree(){
 		root = null;
+	}
+	
+	public static int height(Node node) {
+		if (node == null) {
+			return 0;
+		}
+		return 1 + Math.max(height(node.left), height(node.right));
 	}
 	
 }
