@@ -91,22 +91,34 @@ public class Heap {
 		print();
 		return popped;
 	}
+	
+	
+	// A utility function to check if size of heap is 1 or not
+	public boolean isSizeOne()
+	{
+	    return (size == 1);
+	}
 
+	public int extractMin()
+	{
+		int popped = Heap[FRONT];
+		Heap[FRONT] = Heap[size--];
+		minHeapify(FRONT);
+		return popped;
+	}
+	
 	public static void main(String... arg) {
 		System.out.println("The Min Heap is ");
-		Heap minHeap = new Heap(15);
-		minHeap.insert(5);
-		minHeap.insert(3);
+		Heap minHeap = new Heap(4);
+		minHeap.insert(1);
+		minHeap.insert(2);
 		minHeap.insert(17);
-		minHeap.insert(10);
-		minHeap.insert(84);
-		minHeap.insert(19);
-		minHeap.insert(6);
-		minHeap.insert(22);
-		minHeap.insert(9);
+	
 		minHeap.minHeap();
 
 		minHeap.print();
+		System.out.println("The Min val is " + minHeap.remove());
+		minHeap.minHeap();
 		System.out.println("The Min val is " + minHeap.remove());
 	}
 
